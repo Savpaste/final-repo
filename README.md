@@ -1,7 +1,7 @@
 Just setting up a README file
 
 # Puzzle Palace
-An adventure game that involves solving puzzles and riddles and interacting with the environment in order to advance and beat the game.
+An awesome adventure game that involves solving puzzles and riddles and interacting with the environment in order to advance and beat the game.
 
 # Features
 -A controllable main protagonist
