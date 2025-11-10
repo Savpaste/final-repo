@@ -8,16 +8,16 @@ include_directories(include)
 
 file(GLOB SOURCES "src/*.cpp"
         src/main.cpp
-        src/Palace.cpp
-        src/Map.cpp
-        src/Room.cpp
-        src/Player.cpp
-        src/NPC.cpp
-        src/Inventory.cpp
-        src/Items.cpp
-        src/Game.cpp
-        src/Puzzle.cpp
-        src/Riddle.cpp
+        #src/Palace.cpp
+        #src/Map.cpp
+        #src/Room.cpp
+        #src/Player.cpp
+        #src/NPC.cpp
+        #src/Inventory.cpp
+        #src/Items.cpp
+        #src/Game.cpp
+        #src/Puzzle.cpp
+        #src/Riddle.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES}
