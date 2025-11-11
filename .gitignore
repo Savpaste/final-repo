@@ -1,5 +1,5 @@
 # Build artifacts
-build/
+../build/
 *.o
 *.out
 *.exe
@@ -7,7 +7,7 @@ build/
 # IDE files
 .vscode/
 .idea/
-cmake-build-*/
+cmake-build-debug/
 
 # OS files
 .DS_Store

@@ -29,7 +29,7 @@ class Player : public Character {
     void showInventory() const;
 
     //Interact with NPC or not
-    bool interact(const NPC& npc);
+    bool interact(const NPC& npc, const Item& item, std::string getGameType) const;
 
 };
 

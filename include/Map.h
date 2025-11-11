@@ -26,9 +26,7 @@ class Map {
     std::vector<Room>& getRooms() const;
     int getCurrentRoomIndex() const;
 
-    //Room interactions
-    void enterRoom(Room& room);
-    void exitRoom(Room& room);
+
 
 };
 

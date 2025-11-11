@@ -24,6 +24,7 @@ class Inventory {
 
     //Inventory actions
     bool addItem(const Item& item);
+    bool useItem(const Item& item);
     void display() const;
 
 

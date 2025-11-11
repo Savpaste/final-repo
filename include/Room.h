@@ -47,6 +47,7 @@ class Room {
     //Room actions
     void draw();
     bool isWall(int r, int c);
+    void addDoor(int r, int c);
 
     //Adds NPCs or games to room
     void addNPC(NPC& npc);
@@ -54,8 +55,7 @@ class Room {
     void addRiddle(Riddle& riddle);
 
     //Player interactions with room
-    void enter(Player* p);
-    void leave();
+    void leaveRoom();
 
 
 };
