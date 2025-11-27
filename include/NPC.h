@@ -1,31 +1,36 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_NPC_H
 #define FINAL_REPO_LOCAL_NPC_H
 
-
-#include <iostream>
 #include "Character.h"
+#include "Player.h"
+#include "Riddle.h"
+#include <vector>
+#include <string>
 
 //Class for all the non player characters
 class NPC : public Character {
 
-    private:
+    protected:
     char symbol;
-    std::string dialogue;
+    std::vector<std::string> dialogue;
+    int dialogueIndex;
 
     public:
     //Constructor and deconstructor
-    NPC(const std::string& name);
+    NPC(std::string name, std::vector<std::string> dialogueLines, char symbol);
     ~NPC();
+
+    //void interact(Player* player);
+
+    //Dialogue implementation
+    void speak();
+    void addDialogue(std::string line);
+    //void setRiddle(Riddle* r);
+
+    //void interact();
 
     //Getter for the NPCs representative character/symbol
     char getSymbol() const { return symbol; }
-
-    void setDialogue(std::string dialogue) { this->dialogue = dialogue; }
-    std::string getDialogue() const { return dialogue; }
 
 };
 

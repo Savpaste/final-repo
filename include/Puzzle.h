@@ -1,7 +1,3 @@
-//
-// Created by Avery Williams on 10/26/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_PUZZLE_H
 #define FINAL_REPO_LOCAL_PUZZLE_H
 
@@ -14,6 +10,7 @@ class Puzzle : public Game {
 
     private:
     int puzzleID;
+    std::function<bool(Game*)> isSolved;
 
     public:
     //Constructor and deconstructor
@@ -24,7 +21,9 @@ class Puzzle : public Game {
     int getPuzzleID() const { return puzzleID; }
 
     //Solver function
-    std::function<bool(Game*)> isSolved;
+    bool puzzleSolved(Game* game) {
+        return isSolved(game);
+    }
 
 
 };

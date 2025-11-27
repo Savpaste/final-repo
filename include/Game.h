@@ -1,11 +1,7 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_CHALLENGES_H
 #define FINAL_REPO_LOCAL_CHALLENGES_H
 
-#include <iostream>
+
 #include <vector>
 #include <string>
 

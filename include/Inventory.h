@@ -1,7 +1,3 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_INVENTORY_H
 #define FINAL_REPO_LOCAL_INVENTORY_H
 

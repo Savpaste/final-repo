@@ -1,15 +1,15 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_PLAYER_H
 #define FINAL_REPO_LOCAL_PLAYER_H
 
-
-#include <string>
 #include "Character.h"
+#include "Inventory.h"
 #include "Items.h"
-#include "NPC.h"
+#include <string>
+
+
+
+class NPC;
+class RiddleNPC;
 
 //Class for the player/user
 class Player : public Character {
@@ -19,7 +19,7 @@ class Player : public Character {
 
     public:
     //Constructor and deconstructor
-    Player(const std::string& name);
+    Player(std::string playerName);
     ~Player();
 
     //Operator overload that allows the player to add items to their inventory
@@ -28,8 +28,10 @@ class Player : public Character {
     //Displays inventory
     void showInventory() const;
 
-    //Interact with NPC or not
-    bool interact(const NPC& npc, const Item& item, std::string getGameType) const;
+    //Interact with NPC/item or not
+    bool interactNPC(NPC* npc) const;
+    bool interactRiddleNPC(RiddleNPC* riddleNPC);
+    bool interactItem(Item* item) const;
 
 };
 

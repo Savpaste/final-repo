@@ -1,0 +1,57 @@
+Start testing: Nov 26 18:35 PST
+----------------------------------------------------------
+1/1 Testing: FeatureTests
+1/1 Test: FeatureTests
+Command: "/Users/averywilliams/CLionProjects/final-repo-local/build/test_feature"
+Directory: /Users/averywilliams/CLionProjects/final-repo-local/build
+"FeatureTests" start time: Nov 26 18:35 PST
+Output:
+----------------------------------------------------------
+
+=== Running Tests for Puzzle Palace Room Feature ===
+
+Test 1: Normal Operation (Adding Player & NPC)...Character TestHero created.
+
+Player TestHero has entered the Palace
+
+Character Guard created.
+
+NPC destroyed
+Character Guard destroyed.
+
+ PASSED
+Player TestHero has left the palace
+Character TestHero destroyed.
+
+Test 2: Boundary Conditions (Draw Output)...Character Tester created.
+
+Player Tester has entered the Palace
+
+Character Butler created.
+
+NPC destroyed
+Character Butler destroyed.
+
+ PASSED
+Player Tester has left the palace
+Character Tester destroyed.
+
+Test 3: Edge Case (Movement and Draw)...Character Tester created.
+
+Player Tester has entered the Palace
+
+ PASSED
+Player Tester has left the palace
+Character Tester destroyed.
+
+
+✅ All tests passed!
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"FeatureTests" end time: Nov 26 18:35 PST
+"FeatureTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 26 18:35 PST

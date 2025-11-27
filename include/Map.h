@@ -1,7 +1,3 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_MAP_H
 #define FINAL_REPO_LOCAL_MAP_H
 
@@ -13,8 +9,8 @@
 class Map {
 
     private:
-    std::vector<Room> rooms;
-    int currentRoomIndex;
+    std::vector<Room*> rooms;
+    int currentRoomID;
 
     public:
     //Constructor and deconstructor
@@ -22,10 +18,15 @@ class Map {
     ~Map();
 
     //Getters for number of rooms and room indices
-    void addRoom(const Room& room);
-    std::vector<Room>& getRooms() const;
-    int getCurrentRoomIndex() const;
+    void addRoom(Room* room);
+    std::vector<Room*>& getRooms() { return rooms; }
+    int getCurrentRoomID() const { return currentRoomID; };
 
+    //Function to draw the current room the player is in
+    void drawCurrentRoom() const;
+
+    //Function for wall logic
+    bool isWall(int x, int y);
 
 
 };

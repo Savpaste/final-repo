@@ -1,7 +1,3 @@
-//
-// Created by Avery Williams on 10/25/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_CHARACTER_H
 #define FINAL_REPO_LOCAL_CHARACTER_H
 
@@ -18,8 +14,11 @@ class Character {
 
     public:
     //Constructor and deconstructor
-    Character(const std::string& name);
+    Character(std::string name);
     virtual ~Character();
+
+    //Getter for name
+    std::string getName() const { return name; }
 
     //Getters for position
     int getX() const { return x; }
