@@ -1,12 +1,9 @@
-//
-// Created by Avery Williams on 10/24/25.
-//
-
 #ifndef FINAL_REPO_LOCAL_ITEMS_H
 #define FINAL_REPO_LOCAL_ITEMS_H
 
 
 #include "string"
+
 
 //Class that handles individual items
 class Item {
