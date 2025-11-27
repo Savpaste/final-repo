@@ -88,15 +88,7 @@ int main() {
 
 
 
-/*
-    //TODO: Create the player
-    string playerName;
-    cout << "Please enter your name: ";
-    cin >> playerName;
-    Player player(playerName);
-
-
-    //TODO create games
+    /*//TODO create games
     Puzzle puzzle1(1, [](Game* game) {
     std::string answer1;
     cout << "What is xyz? ";
@@ -116,19 +108,8 @@ int main() {
     room1.addPuzzle(puzzle1);
     room1.addRiddle(riddle1);
 
-    //TODO: Add rooms to map
-    map.addRoom (room1);
-    map.addRoom (room2);
-    map.addRoom (room3);
 
 
-    //TODO: Start game and display main menu
-    displayMenu();
-    cout << "You are now entering Puzzle Palace\n";
-
-    //TODO: Run "Palace"
-    Palace palace;
-    palace.run();
 
     //TODO: End game
     cout << "Thank you for playing Puzzle Palace!\n";

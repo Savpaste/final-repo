@@ -31,7 +31,7 @@ Palace::Palace()
         "There's riches to be had ahead"
         };
 
-    /*NPC* butler = new NPC("Butler", butlerDialogue, 'b');
+    NPC* butler = new NPC("Butler", butlerDialogue, 'b');
     room1->addNPC(butler, 5, 3);
 
     Riddle* riddle1 = new Riddle(1, "What is the beginning of eternity, the end of time and space, and the end of life as we know it?", []( const string& answer) { return answer == "E";});
@@ -39,7 +39,7 @@ Palace::Palace()
     RiddleNPC* ghost = new RiddleNPC("Ghost", riddle1, 'G');
     room1->addRiddleNPC(ghost, 3, 3);
 
-    gameMap.addRoom(room1);*/
+    gameMap.addRoom(room1);
 
 
     //cout << "Puzzle Palace built.\n";
