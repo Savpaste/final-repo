@@ -14,19 +14,24 @@ Riddle::Riddle(int id, const string q, function<bool(string&)> solverFunc)
 
 Riddle::~Riddle() {}
 
-void Riddle::ask() {
+bool Riddle::ask() {
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::cout << question << "\n> ";
+    while (true) {
 
-    std::string answer;
-    std::getline(std::cin, answer);
+        cout << question << "\n> ";
+        string answer;
+        getline(cin, answer);
 
-    if (solver(answer)) {
-        std::cout << "Correct!\n";
-    } else {
-        std::cout << "Incorrect!\n";
+        if (solver(answer)) {
+            cout << endl;
+            cout << "Correct!\n";
+            return true;
+        }
+
+        cout << endl;
+        cout << "Incorrect! Please try again!\n";
+        cout << endl;
     }
 }
-

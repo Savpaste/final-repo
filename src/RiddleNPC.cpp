@@ -18,6 +18,7 @@ void RiddleNPC::interact(Player* player) {
           solvedAlready = true;
           riddle->ask();
      } else {
-          cout << "You've already tried\n";
+          cout << "You've already solved this riddle!\n";
+          cin.get();
      }
 };

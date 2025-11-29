@@ -22,7 +22,7 @@ class Riddle : public Game {
     int getRiddleID() const { return riddleID; }
 
     //Function for NPCs to ask questions
-    void ask();
+    bool ask();
 
     //const std::string getRidd() const { return ridd; }
 

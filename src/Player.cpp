@@ -39,7 +39,6 @@ bool Player::interactNPC(NPC* npc) const {
 bool Player::interactRiddleNPC(RiddleNPC* rnpc) {
     rnpc->interact(this);
     cout << "\nPress Enter to continue...";
-    cin.ignore();
     cin.get();
     return true;
 }
