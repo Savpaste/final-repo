@@ -16,7 +16,6 @@ class Item {
     public:
     //Constructor and deconstructor
     Item(std::string name = "misc.", int value = 0);
-    ~Item();
 
     //Getter for total number of items in inventory
     static int getTotalItems();

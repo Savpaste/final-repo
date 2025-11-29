@@ -8,6 +8,6 @@ Puzzle::Puzzle(int id, std::function<bool(Game *)> solverFunc)
     isSolved = solverFunc;
 }
 
-Puzzle::~Puzzle() {}
+
 
 

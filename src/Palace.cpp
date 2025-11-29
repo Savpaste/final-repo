@@ -19,26 +19,33 @@ Palace::Palace()
     inventory(10),
     running(true) {
 
-
+    //Creates an item an adds it to the players inventory
     Item torch("Torch", 5);
     player += torch;
 
+    //Creates a room
     Room* room1 = new Room(1, "Foyer", "Entryway", 15, 15, &player);
 
-
+    //Adds dialogue for NPCs to a vector
     vector<string> butlerDialogue = {
         "Welcome to the Puzzle Palace, traveler",
         "There's riches to be had ahead"
         };
 
+    //Creates NPC and attributes
     NPC* butler = new NPC("Butler", butlerDialogue, 'b');
+    //Adds NPC to room
     room1->addNPC(butler, 5, 3);
 
+    //Creates riddle and answer
     Riddle* riddle1 = new Riddle(1, "What is the beginning of eternity, the end of time and space, and the end of life as we know it?", []( const string& answer) { return answer == "E";});
 
+    //Creates RiddleNPC and attributes including the riddle to be asked
     RiddleNPC* ghost = new RiddleNPC("Ghost", riddle1, 'G');
+    //Adds RiddleNPC to room
     room1->addRiddleNPC(ghost, 3, 3);
 
+    //Adds room to overall map
     gameMap.addRoom(room1);
 
 
@@ -50,9 +57,9 @@ Palace::~Palace() {
     cout << "Puzzle Palace destroyed.\n";
 }
 
-
 void Palace::processInput(char input) {
-    input = toupper(input);
+    input = toupper(input); //Allows for lowercase inputs to be valid
+    //Updates player location
     int newX = player.getX();
     int newY = player.getY();
 
@@ -70,9 +77,10 @@ void Palace::processInput(char input) {
             this_thread::sleep_for(chrono::milliseconds(500));
     }
 
+    //Designates which room is drawn
     Room* currentRoom = gameMap.getRooms()[gameMap.getCurrentRoomID()];
 
-    // Check walls
+    //Check walls and returns cout if player runs into wall
     if (currentRoom->isWall(newX, newY)) {
         cout << "OUCH!! You hit a wall!\n";
         cout << endl;
@@ -80,7 +88,7 @@ void Palace::processInput(char input) {
     }
 
 
-    // Check NPC collisions
+    //Check NPCs collisions
     for (auto& npc : currentRoom->getNPCs()) {
         if (npc->getX() == newX && npc->getY() == newY) {
             player.interactNPC(npc);  // trigger interaction
@@ -88,7 +96,7 @@ void Palace::processInput(char input) {
         }
     }
 
-    // Check RiddleNPCs collisions
+    //Check RiddleNPCs collisions
     for (auto& rnpc : currentRoom->getRiddleNPCs()) {
         if (rnpc->getX() == newX && rnpc->getY() == newY) {
             player.interactRiddleNPC(rnpc);
@@ -96,7 +104,7 @@ void Palace::processInput(char input) {
         }
     }
 
-    // Safe to move
+    //Safe to move
     player.setPosition(newX, newY);
 }
 
@@ -104,7 +112,6 @@ void Palace::run() {
 
     while (running) {
 
-        system("clear");
         cout << endl;
         gameMap.drawCurrentRoom();
         cout << endl;

@@ -12,24 +12,27 @@ Riddle::Riddle(int id, const string q, function<bool(string&)> solverFunc)
 
 }
 
-Riddle::~Riddle() {}
-
 bool Riddle::ask() {
 
+    //Clears the buffer
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
+    //Logic to ask the riddle
     while (true) {
 
+        //Question and input for guess
         cout << question << "\n> ";
         string answer;
         getline(cin, answer);
 
+        //If solved returns true.  If not returns false.
         if (solver(answer)) {
             cout << endl;
             cout << "Correct!\n";
             return true;
         }
 
+        //Validation logic. Reenter guess if wrong
         cout << endl;
         cout << "Incorrect! Please try again!\n";
         cout << endl;

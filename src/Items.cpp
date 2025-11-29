@@ -14,10 +14,6 @@ Item::Item(string name, int value)
     totalItems++;
     }
 
-Item::~Item() {
-
-}
-
 int Item::getTotalItems() {
     return totalItems;
 }

@@ -89,6 +89,7 @@ Room& Room::operator = (const Room& other) {
 }
 
 void Room::draw() const {
+    //Inserts the player symbol
     for (int r = 0; r < height; r++) {
         for (int c = 0; c < width; c++) {
             if (player && player->getX() == c && player->getY() == r) {
@@ -96,7 +97,7 @@ void Room::draw() const {
             } else {
                 bool found = false;
 
-                // Check normal NPCs
+                // Check normal NPCs and inserts sybmol
                 for (auto& npc : npcs) {
                     if (npc->getX() == c && npc->getY() == r) {
                         cout << npc->getSymbol();
@@ -105,7 +106,7 @@ void Room::draw() const {
                     }
                 }
 
-                // Check RiddleNPCs
+                // Check RiddleNPCs and inserts symbol
                 if (!found) {
                     for (auto& rnpc : riddleNPCs) {
                         if (rnpc->getX() == c && rnpc->getY() == r) {
@@ -125,6 +126,7 @@ void Room::draw() const {
     }
 }
 
+//Function to draw a wall
 bool Room::isWall(int r, int c) {
     if (r < 0 || r >= width || c < 0 || c >= height) {
         return true;

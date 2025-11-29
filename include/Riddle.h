@@ -14,21 +14,14 @@ class Riddle : public Game {
     std::function<bool(std::string&)> solver;
 
     public:
-    //Constructor and deconstructor
+    //Constructor
     Riddle(int id, const std::string question, std::function<bool(std::string&)> solverFunc);
-    ~Riddle();
 
     //Getter for riddle ID
     int getRiddleID() const { return riddleID; }
 
-    //Function for NPCs to ask questions
+    //Function for NPCs to ask riddles
     bool ask();
-
-    //const std::string getRidd() const { return ridd; }
-
-    //Solver function
-    //bool riddleSolved(Game* game) {return isSolved(game);}
-
 
 };
 

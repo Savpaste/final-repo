@@ -19,8 +19,10 @@ class RiddleNPC : public Character {
     RiddleNPC(std::string name, Riddle* r, char symbol);
     ~RiddleNPC();
 
+    //Function for the player to interact with the RiddleNPCs
     void interact(Player* player);
 
+    //Returns the symbol that represents the RiddleNPC
     char getSymbol() { return symbol; }
 
 };

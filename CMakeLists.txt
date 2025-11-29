@@ -47,6 +47,7 @@ add_executable(${PROJECT_NAME} ${SOURCES}
         src/Items.cpp
         include/RiddleNPC.h
         src/RiddleNPC.cpp
+        tests/test_feature2.cpp
 )
 
 # 2. CTest Target (Must be defined separately)

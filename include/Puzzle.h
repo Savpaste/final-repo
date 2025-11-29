@@ -13,9 +13,9 @@ class Puzzle : public Game {
     std::function<bool(Game*)> isSolved;
 
     public:
-    //Constructor and deconstructor
+    //Constructor
     Puzzle(int id, std::function<bool(Game*)> solverFunc);
-    ~Puzzle();
+
 
     //Getter for puzzle ID
     int getPuzzleID() const { return puzzleID; }

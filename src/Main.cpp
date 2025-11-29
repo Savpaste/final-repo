@@ -5,8 +5,6 @@
 using namespace std;
 
 
-
-
 void displayInstructions() {
 
     cout << endl << endl;
@@ -27,7 +25,6 @@ void displayInstructions() {
 }
 
 
-//TODO: Setup opening menu
 void displayMenu() {
     int choice;
 
@@ -84,33 +81,12 @@ int main() {
     palace.run();
 
 
+    //TODO create puzzles and add to rooms
 
-    /*//TODO create games
-    Puzzle puzzle1(1, [](Game* game) {
-    std::string answer1;
-    cout << "What is xyz? ";
-    cin >> answer1;
-    return answer1 == "abc";
-});
-    Riddle riddle1(1, [](Game* game) {return false;});
-
-    //TODO: Create the map and rooms
-    Map map;
-    Room room1(1, "Foyer", "Entryway", 8, 8, &player);
-    Room room2(2, "Great Hall", "Main Room", 15, 15, &player);
-    Room room3(3, "Torture Chamber", "A dank underground dungeon", 10, 10, &player);
-
-    //TODO: Add NPCs and games to rooms
-    //room1.addNPC();
-    room1.addPuzzle(puzzle1);
-    room1.addRiddle(riddle1);
-
-
-
+    //TODO add logic for changing rooms
 
     //TODO: End game
     cout << "Thank you for playing Puzzle Palace!\n";
-*/
 
 return 0;
 }

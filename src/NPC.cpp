@@ -7,7 +7,6 @@ NPC::NPC(string name, vector<string> dialogueLines, char symbol) : Character(nam
     dialogue(dialogueLines),
     dialogueIndex(0),
     symbol(symbol)
-    //riddle(nullptr)
 {}
 
 NPC::~NPC() {
@@ -15,20 +14,9 @@ NPC::~NPC() {
     cout << "NPC destroyed" << endl;
 }
 
-//void NPC::setRiddle(Riddle* r) { riddle = r; }
-
 void NPC::addDialogue(std::string line) {
     dialogue.push_back(line);
 }
-
-/*void NPC::interact(Player* player) {
-    for (auto& line : dialogue) {
-        cout << name << " says: " << line << endl;
-    }
-    if (riddle) {
-        riddle->ask();
-    }
-}*/
 
 void NPC::speak() {
     if (!dialogue.empty() && dialogueIndex < dialogue.size()) {
