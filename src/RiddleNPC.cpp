@@ -19,10 +19,10 @@ void RiddleNPC::interact(Player* player) {
      //Riddle logic to check if riddle is solved and ask the riddle if not
      if (!solvedAlready) {
           solvedAlready = true;
-          //riddle->ask();
+          riddle->ask();
      } else {
           //Outputs if the riddle has been solved
           cout << "You've already solved this riddle!\n";
-          //cin.get();
+          cin.get();
      }
 }
