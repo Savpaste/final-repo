@@ -45,7 +45,6 @@ add_executable(${PROJECT_NAME} ${SOURCES}
         src/Riddle.cpp
         src/Inventory.cpp
         src/Items.cpp
-        include/RiddleNPC.h
         src/RiddleNPC.cpp
 )
 
