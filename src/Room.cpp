@@ -56,6 +56,16 @@ Room::~Room() {
         delete[] grid[i];
     }
     delete[] grid;
+
+    // Delete normal NPCs
+    for (NPC* npc : npcs) {
+        delete npc;
+    }
+
+    // Delete RiddleNPCs
+    for (RiddleNPC* rnpc : riddleNPCs) {
+        delete rnpc;
+    }
 }
 
 Room& Room::operator = (const Room& other) {

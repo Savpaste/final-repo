@@ -344,6 +344,7 @@ src/Palace.o: src/Palace.cpp.o
 # target to build an object file
 src/Palace.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_repo_local.dir/build.make CMakeFiles/final_repo_local.dir/src/Palace.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_feature.dir/build.make CMakeFiles/test_feature.dir/src/Palace.cpp.o
 .PHONY : src/Palace.cpp.o
 
 src/Palace.i: src/Palace.cpp.i
@@ -352,6 +353,7 @@ src/Palace.i: src/Palace.cpp.i
 # target to preprocess a source file
 src/Palace.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_repo_local.dir/build.make CMakeFiles/final_repo_local.dir/src/Palace.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_feature.dir/build.make CMakeFiles/test_feature.dir/src/Palace.cpp.i
 .PHONY : src/Palace.cpp.i
 
 src/Palace.s: src/Palace.cpp.s
@@ -360,6 +362,7 @@ src/Palace.s: src/Palace.cpp.s
 # target to generate assembly for a file
 src/Palace.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_repo_local.dir/build.make CMakeFiles/final_repo_local.dir/src/Palace.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_feature.dir/build.make CMakeFiles/test_feature.dir/src/Palace.cpp.s
 .PHONY : src/Palace.cpp.s
 
 src/Player.o: src/Player.cpp.o

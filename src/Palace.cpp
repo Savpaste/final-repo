@@ -53,8 +53,9 @@ Palace::Palace()
 }
 
 Palace::~Palace() {
-
-    cout << "Puzzle Palace destroyed.\n";
+    for (Room* room : gameMap.getRooms()) {
+        delete room;
+    }
 }
 
 void Palace::processInput(char input) {

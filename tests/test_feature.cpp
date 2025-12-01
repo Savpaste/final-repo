@@ -1,104 +1,91 @@
-#include "../include/Room.h"
+#include "../include/Palace.h"
+#include "../include/RiddleNPC.h"
 #include "../include/Player.h"
-#include "../include/NPC.h"
+#include "../include/Room.h"
 #include <cassert>
 #include <iostream>
 #include <sstream>
-#include <vector>
 #include <string>
 
-std::string captureDrawOutput(const Room& room) {
-    std::streambuf* old_cout_buf = std::cout.rdbuf();
-    std::ostringstream strStream;
-
-    std::cout.rdbuf(strStream.rdbuf());
-
-    room.draw();
-
-    std::cout.rdbuf(old_cout_buf);
-
-    return strStream.str();
-}
-
-void testNormalOperation() {
-    std::cout << "Test 1: Normal Operation (Adding Player & NPC)...";
-
-    Player p("TestHero");
-    Room room(1, "TestRoom", "A square room", 6, 6, &p);
-
-    std::vector<std::string> dialogue = {"Hi"};
-    NPC* npc1 = new NPC("Guard", dialogue, 'G');
-
-    room.addNPC(npc1, 3, 3);
-
-    assert(p.getX() == 1);
-    assert(p.getY() == 1);
-
-    assert(room.getNPCs().size() == 1);
-    assert(room.getNPCs()[0]->getX() == 3);
-    assert(room.getNPCs()[0]->getY() == 3);
-
-    delete npc1;
-
-    std::cout << " PASSED\n";
-}
-
-void testBoundaryConditions() {
-    std::cout << "Test 2: Boundary Conditions (Draw Output)...";
-
-    Player p("Tester");
-    Room room(2, "DrawTest", "4x4", 4, 4, &p);
-
-    std::vector<std::string> dialogue = {"?"};
-    NPC* npc2 = new NPC("Butler", dialogue, 'B');
-    room.addNPC(npc2, 2, 1);
-
-    std::string output = captureDrawOutput(room);
-
-    assert(output[6] == '@');
-
-    assert(output[7] == 'B');
-
-    assert(output[16] == '#');
-
-    delete npc2;
-
-    std::cout << " PASSED\n";
-}
-
-void testEdgeCase() {
-    std::cout << "Test 3: Edge Case (Movement and Draw)...";
-
-    Player p("Tester");
-    Room room(3, "MoveTest", "5x5", 5, 5, &p);
-
-    assert(p.getX() == 1);
-
-    p.setPosition(3, 3);
-
-    assert(p.getX() == 3);
-    assert(room.isWall(3, 3) == false);
-
-    std::string output = captureDrawOutput(room);
-
-    assert(output[21] == '@');
-
-    std::cout << " PASSED\n";
-}
-
-
-int main() {
-    std::cout << "\n=== Running Tests for Puzzle Palace Room Feature ===\n\n";
-
-    try {
-        testNormalOperation();
-        testBoundaryConditions();
-        testEdgeCase();
-
-        std::cout << "\n✅ All tests passed!\n";
-        return 0;
-    } catch (const std::exception& e) {
-        std::cerr << "\n❌ Test failed with exception: " << e.what() << "\n";
-        return 1;
+// Helper to simulate input and capture output
+class StreamRedirector {
+public:
+    StreamRedirector(const std::string& input) {
+        oldCin = std::cin.rdbuf(inputSS.rdbuf());
+        oldCout = std::cout.rdbuf(outputSS.rdbuf());
+        inputSS.str(input);
     }
+    ~StreamRedirector() {
+        std::cin.rdbuf(oldCin);
+        std::cout.rdbuf(oldCout);
+    }
+    std::string getOutput() const { return outputSS.str(); }
+
+private:
+    std::istringstream inputSS;
+    std::ostringstream outputSS;
+    std::streambuf* oldCin;
+    std::streambuf* oldCout;
+};
+
+// ----------------- Test Cases -----------------
+
+// 1. Normal operation: solving the riddle
+void testRiddle_Normal() {
+    StreamRedirector sr("P\nI\nE\n"); // Example correct inputs
+
+    Palace game;
+    Room* room = game.getCurrentRoom();
+    auto riddleNPCs = room->getRiddleNPCs();
+    assert(!riddleNPCs.empty());
+
+    RiddleNPC* npc = riddleNPCs[0];
+    npc->interact(&game.getPlayer());
+
+    assert(npc->isSolved()); // Should be solved
+    std::cout << "Test Normal Operation PASSED\n";
+}
+
+// 2. Edge case: interacting again after riddle is solved
+void testRiddle_EdgeCase() {
+    StreamRedirector sr("H\nE\nQ\n"); // Inputs for first interaction
+
+    Palace game;
+    Room* room = game.getCurrentRoom();
+    auto riddleNPCs = room->getRiddleNPCs();
+    RiddleNPC* npc = riddleNPCs[0];
+
+    npc->interact(&game.getPlayer());  // Solve riddle
+    assert(npc->isSolved());
+
+    // Second interaction should not break anything
+    npc->interact(&game.getPlayer());
+    assert(npc->isSolved());  // Still solved
+    std::cout << "Test Edge Case PASSED\n";
+}
+
+// 3. Boundary / integration: multiple wrong answers then correct
+void testRiddle_Boundary() {
+    StreamRedirector sr("N\nX\nY\nZ\nE\n"); // Several wrong then correct
+
+    Palace game;
+    Room* room = game.getCurrentRoom();
+    auto riddleNPCs = room->getRiddleNPCs();
+    RiddleNPC* npc = riddleNPCs[0];
+
+    npc->interact(&game.getPlayer());  // Interact with riddle
+    assert(npc->isSolved());            // Finally solved
+    std::cout << "Test Boundary/Integration PASSED\n";
+}
+
+// ----------------- Main -----------------
+int main() {
+    std::cout << "\n=== Running Riddle Feature Tests ===\n";
+
+    testRiddle_Normal();
+    testRiddle_EdgeCase();
+    testRiddle_Boundary();
+
+    std::cout << "\nAll tests PASSED!\n";
+    return 0;
 }

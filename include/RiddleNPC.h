@@ -25,6 +25,8 @@ class RiddleNPC : public Character {
     //Returns the symbol that represents the RiddleNPC
     char getSymbol() { return symbol; }
 
+    bool isSolved() const { return solvedAlready; }
+
 };
 
 #endif //FINAL_REPO_LOCAL_RIDDLENPC_H

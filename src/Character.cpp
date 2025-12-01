@@ -11,8 +11,8 @@ Character::Character(string name) :
 
 Character::~Character() {
 
-    cout << "Character " << name << " destroyed." << endl;
-    cout << endl;
+    //cout << "Character " << name << " destroyed." << endl;
+    //cout << endl;
 }
 
 void Character::setPosition(int newX, int newY) {

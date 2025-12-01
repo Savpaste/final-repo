@@ -47,7 +47,6 @@ add_executable(${PROJECT_NAME} ${SOURCES}
         src/Items.cpp
         include/RiddleNPC.h
         src/RiddleNPC.cpp
-        tests/test_feature2.cpp
 )
 
 # 2. CTest Target (Must be defined separately)
@@ -55,6 +54,7 @@ enable_testing()
 
 add_executable(test_feature
         tests/test_feature.cpp
+        src/Palace.cpp
         src/Room.cpp
         src/Player.cpp
         src/NPC.cpp

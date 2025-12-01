@@ -10,8 +10,6 @@ NPC::NPC(string name, vector<string> dialogueLines, char symbol) : Character(nam
 {}
 
 NPC::~NPC() {
-
-    cout << "NPC destroyed" << endl;
 }
 
 void NPC::addDialogue(std::string line) {

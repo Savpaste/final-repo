@@ -26,6 +26,13 @@ public:
     Palace();
     ~Palace();
 
+    Player& getPlayer() {
+        return player;
+    }
+
+    Room* getCurrentRoom() { return gameMap.getRooms()[gameMap.getCurrentRoomID()];
+    }
+
     //Function to run the game
     void run();
 
