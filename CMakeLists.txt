@@ -48,7 +48,7 @@ add_executable(${PROJECT_NAME} ${SOURCES}
         src/RiddleNPC.cpp
 )
 
-# 2. CTest Target (Must be defined separately)
+
 enable_testing()
 
 add_executable(test_feature
