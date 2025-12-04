@@ -19,12 +19,13 @@ Palace::Palace()
     inventory(10),
     running(true) {
 
-    //Creates an item an adds it to the players inventory
+    //Creates an item and adds it to the players inventory
     Item torch("Torch", 5);
     player += torch;
 
     //Creates a room
     Room* room1 = new Room(1, "Foyer", "Entryway", 15, 15, &player);
+    Room* room2 = new Room(2, "Dungeon", "Torture Chamber", 15, 15, &player);
 
     //Adds dialogue for NPCs to a vector
     vector<string> butlerDialogue = {
@@ -45,9 +46,17 @@ Palace::Palace()
     //Adds RiddleNPC to room
     room1->addRiddleNPC(ghost, 3, 3);
 
+    room1->addDoor(8,8,2);
+
     //Adds room to overall map
     gameMap.addRoom(room1);
-
+    if (gameMap.getCurrentRoom()) {
+        cout << "Current room is set: "
+             << gameMap.getCurrentRoom()->getRoomName() << endl;
+    } else {
+        cout << "Current room is nullptr!" << endl;
+    }
+    gameMap.addRoom(room2);
 
     //cout << "Puzzle Palace built.\n";
 }
@@ -79,7 +88,7 @@ void Palace::processInput(char input) {
     }
 
     //Designates which room is drawn
-    Room* currentRoom = gameMap.getRooms()[gameMap.getCurrentRoomID()];
+    Room* currentRoom = gameMap.getCurrentRoom();
 
     //Check walls and returns cout if player runs into wall
     if (currentRoom->isWall(newX, newY)) {
@@ -104,7 +113,22 @@ void Palace::processInput(char input) {
             return;  // stop moving
         }
     }
+    int nextRoomID = currentRoom->getDoorDest(newX, newY);
+    if (nextRoomID != -1) {
+        cout << "You step through the door...\n";
 
+        // Optional: perform room cleanup
+        currentRoom->leaveRoom();
+
+        // Change to the new room
+        gameMap.changeRoom(nextRoomID);
+
+        // Update player coordinates to the new room's spawn point
+        //Room* newRoom = gameMap.getRooms()[nextRoomID];
+        //player.setPosition(newRoom->getStartX(), newRoom->getStartY());
+
+        return; // stop further movement in this tick
+    }
     //Safe to move
     player.setPosition(newX, newY);
 }

@@ -14,7 +14,7 @@ An awesome adventure game that involves solving puzzles and riddles and interact
 ## Initial Feature
 
 **Implemented Features**
-- Feature 1: Map.  Checking to make sure the map is drawn correctly, that I am able to add player and NPCs, and that the draw logic works and the player movement works.
+* **Feature 1:** Map.  Checking to make sure the map is drawn correctly, that I am able to add player and NPCs, and that the draw logic works and the player movement works.
 
 **Next Feature**
 * **Feature 2**: Add RiddleNPCs and riddles

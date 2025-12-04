@@ -11,6 +11,8 @@ class Map {
     private:
     std::vector<Room*> rooms;
     int currentRoomID;
+    Room* currentRoom;
+
 
     public:
     //Constructor and deconstructor
@@ -18,16 +20,19 @@ class Map {
     ~Map();
 
     //Getters for number of rooms and room indices
-    void addRoom(Room* room);
     std::vector<Room*>& getRooms() { return rooms; }
     int getCurrentRoomID() const { return currentRoomID; };
+    Room* getCurrentRoom() { return currentRoom; };
+    int getTotalRooms() const { return rooms.size(); };
+
+    void addRoom(Room* room);
+    void changeRoom(int roomID);
 
     //Function to draw the current room the player is in
     void drawCurrentRoom() const;
 
     //Function for wall logic
     bool isWall(int x, int y);
-
 
 };
 

@@ -147,7 +147,25 @@ bool Room::isWall(int r, int c) {
 void Room::leaveRoom() {
 }
 
-void Room::addDoor(int r, int c) {
+void Room::addDoor(int r, int c, int nextRoomID) {
+    // Store door info
+    doors.push_back(Door(r, c, nextRoomID));
+
+    // Mark the door on the grid
+    if (r >= 0 && r < height && c >= 0 && c < width) {
+        grid[r][c] = 'D';  // 'D' represents a door
+    } else {
+        std::cout << "Warning: Door position (" << r << "," << c << ") is out of bounds!\n";
+    }
+}
+
+int Room::getDoorDest(int r, int c) const {
+    for (const auto& door : doors) {
+        if (door.row == r && door.col == c) {
+            return door.goToRoomID;
+        }
+    }
+    return -1;  // not a door
 }
 
 void Room::addNPC(NPC* npc, int r, int c) {

@@ -24,6 +24,12 @@ class Room {
     std::vector <NPC*> npcs;
     std::vector <RiddleNPC*> riddleNPCs;
     Player* player;
+    struct Door {
+        int row, col;
+        int goToRoomID;
+        Door(int r, int c, int nextID) : row(r), col(c), goToRoomID(nextID) {}
+    };
+    std::vector <Door> doors;
 
     public:
     //Constructor, deep copy constructor and destructor
@@ -40,13 +46,15 @@ class Room {
     std::string getRoomDescription() const {return roomDescription;}
     int getWidth() const { return width; }
     int getHeight() const { return height; }
+    int getDoorDest(int r, int c) const;
     std::vector<NPC*> getNPCs() { return npcs; }
     std::vector<RiddleNPC*> getRiddleNPCs() { return riddleNPCs; }
 
     //Room actions
     void draw() const;
     bool isWall(int r, int c);
-    void addDoor(int r, int c);
+    void addDoor(int r, int c, int nextRoomID);
+
 
     //Adds NPCs, RiddleNPCs or games to room
     void addRiddleNPC(RiddleNPC* riddleNPC, int r, int c);
