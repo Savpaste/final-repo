@@ -80,5 +80,6 @@ int main() {
     cout << "PASS: Multi-step room transition chain works.\n";
 
     cout << "\nAll tests PASSED!\n";
+
     return 0;
 }
