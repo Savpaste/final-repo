@@ -26,6 +26,8 @@ Palace::Palace()
     //Creates a room
     Room* room1 = new Room(1, "Foyer", "Entryway", 15, 15, &player);
     Room* room2 = new Room(2, "Dungeon", "Torture Chamber", 15, 15, &player);
+    Room* room3 = new Room(3, "Main Hall", "Main Room in the Palace", 15, 15, &player);
+    Room* room4 = new Room(4, "Vault", "Room filled with treasure", 8, 10, &player);
 
     //Adds dialogue for NPCs to a vector
     vector<string> butlerDialogue = {
@@ -47,16 +49,19 @@ Palace::Palace()
     room1->addRiddleNPC(ghost, 3, 3);
 
     room1->addDoor(8,8,2);
+    room1->setStartPosition(1,1);
+    room2->addDoor(2, 2, 3);
+    room2->setStartPosition(1,1);
+    room3->addDoor(3, 3, 4);
+    room3->setStartPosition(1,1);
+    room4->addDoor(4, 4, 5);
+    room4->setStartPosition(1,1);
 
     //Adds room to overall map
     gameMap.addRoom(room1);
-    if (gameMap.getCurrentRoom()) {
-        cout << "Current room is set: "
-             << gameMap.getCurrentRoom()->getRoomName() << endl;
-    } else {
-        cout << "Current room is nullptr!" << endl;
-    }
     gameMap.addRoom(room2);
+    gameMap.addRoom(room3);
+    gameMap.addRoom(room4);
 
     //cout << "Puzzle Palace built.\n";
 }
@@ -124,8 +129,13 @@ void Palace::processInput(char input) {
         gameMap.changeRoom(nextRoomID);
 
         // Update player coordinates to the new room's spawn point
-        //Room* newRoom = gameMap.getRooms()[nextRoomID];
-        //player.setPosition(newRoom->getStartX(), newRoom->getStartY());
+        Room* newRoom = gameMap.getCurrentRoom();
+
+        if (newRoom) {
+            player.setPosition(newRoom->getStartX(), newRoom->getStartY());
+            cout << "You are now entering the " << newRoom->getRoomName() << endl;
+            cout << "It is a " << newRoom->getRoomDescription() << endl;
+        }
 
         return; // stop further movement in this tick
     }

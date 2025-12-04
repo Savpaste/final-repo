@@ -6,6 +6,8 @@ Room::Room(int roomID, string roomName, string roomDescription, int width, int h
     roomID(roomID),
     roomName(roomName),
     roomDescription(roomDescription),
+    startX(1),
+    startY(1),
     player(player),
     width(width),
     height(height) {
@@ -159,13 +161,18 @@ void Room::addDoor(int r, int c, int nextRoomID) {
     }
 }
 
-int Room::getDoorDest(int r, int c) const {
+int Room::getDoorDest(int x, int y) const {
     for (const auto& door : doors) {
-        if (door.row == r && door.col == c) {
+        if (door.row == y && door.col == x) {
             return door.goToRoomID;
         }
     }
     return -1;  // not a door
+}
+
+void Room::setStartPosition(int x, int y) {
+    startX = x;
+    startY = y;
 }
 
 void Room::addNPC(NPC* npc, int r, int c) {

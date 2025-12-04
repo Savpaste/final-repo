@@ -44,6 +44,7 @@ bool Map::isWall(int x, int y)  {
     return currentRoom->isWall(x, y);
 }
 
+
 /*bool Map::isWall(int x, int y)  {
     if (currentRoomID < 0 || currentRoomID >= rooms.size())
         return true;

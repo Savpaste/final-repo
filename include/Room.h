@@ -15,6 +15,8 @@ class Room {
     int roomID;
     int width;
     int height;
+    int startX;
+    int startY;
     char** grid;
     std::string roomName;
     std::string roomDescription;
@@ -40,6 +42,8 @@ class Room {
     //Assignment operator
     Room& operator = (const Room& other);
 
+    void setStartPosition(int startX, int startY);
+
     //Getters for room features
     int getRoomID() const {return roomID;}
     std::string getRoomName() const {return roomName;}
@@ -47,6 +51,8 @@ class Room {
     int getWidth() const { return width; }
     int getHeight() const { return height; }
     int getDoorDest(int r, int c) const;
+    int getStartX() const { return startX; }
+    int getStartY() const { return startY; }
     std::vector<NPC*> getNPCs() { return npcs; }
     std::vector<RiddleNPC*> getRiddleNPCs() { return riddleNPCs; }
 
