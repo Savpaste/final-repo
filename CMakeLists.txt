@@ -52,7 +52,7 @@ add_executable(${PROJECT_NAME} ${SOURCES}
 enable_testing()
 
 add_executable(test_feature
-        tests/test_feature.cpp
+        tests/test_feature3.cpp
         src/Palace.cpp
         src/Room.cpp
         src/Player.cpp
@@ -65,6 +65,8 @@ add_executable(test_feature
         src/Riddle.cpp
         src/Inventory.cpp
         src/Items.cpp
+        tests/test_feature2.cpp
+        tests/test_feature1.cpp
 )
 
 add_test(NAME FeatureTests COMMAND test_feature)
