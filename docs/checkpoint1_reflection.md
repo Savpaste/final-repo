@@ -7,7 +7,7 @@
 ---
 
 ## What Challenges I faced
-* The hardest part for me was actually doing the operating system stuff
+* The hardest part for me was actually doing the operating system things
 
 ---
 
