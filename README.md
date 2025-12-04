@@ -14,20 +14,20 @@ An awesome adventure game that involves solving puzzles and riddles and interact
 ## Initial Feature
 
 **Implemented Features**
-* **Feature 1:** Map.  Checking to make sure the map is drawn correctly, that I am able to add player and NPCs, and that the draw logic works and the player movement works.
+* **Feature 1:** Map
+- Checking to make sure the map is drawn correctly, that I am able to add player and NPCs, and that the draw logic works and the player movement works
 
 **Next Feature**
 * **Feature 2**: Add RiddleNPCs and riddles
 
 **Planned**
 * **Feature 3**: Add puzzle logic 
-* **Feature 4**: Add ability to go to other rooms 
-* **Feature 5**: Add ability to progress through map
-* **Feature 6**: Add win logic 
+* **Feature 4**: Add ability to go to other rooms
+* **Feature 5**: Add win logic 
 
 ---
 
-## Current Status
+## Feature 2
 
 **Implemented Features**
 * **Feature 2**: RiddleNPCs and riddles
@@ -38,5 +38,18 @@ An awesome adventure game that involves solving puzzles and riddles and interact
 
 **Planned**
 * **Feature 4**: Add ability to go to other rooms
-* **Feature 5**: Add ability to progress through map
-* **Feature 6**: Add win logic  
+* **Feature 5**: Add win logic  
+
+---
+
+## Feature 4
+
+**Implemented Features**
+* **Feature 4**: Multiple Room Navigation
+- Ability to move between rooms
+
+**Next Feature**
+* **Feature 3**: Add puzzle logic
+
+**Planned**
+* **Feature 5**: Add win logic 
