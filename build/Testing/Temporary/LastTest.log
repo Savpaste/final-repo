@@ -1,22 +1,36 @@
-Start testing: Nov 30 16:56 PST
+Start testing: Dec 04 14:35 PST
 ----------------------------------------------------------
 1/1 Testing: FeatureTests
 1/1 Test: FeatureTests
 Command: "/Users/averywilliams/CLionProjects/final-repo-local/build/test_feature"
 Directory: /Users/averywilliams/CLionProjects/final-repo-local/build
-"FeatureTests" start time: Nov 30 16:56 PST
+"FeatureTests" start time: Dec 04 14:35 PST
 Output:
 ----------------------------------------------------------
 
-=== Running Riddle Feature Tests ===
+=== Running Room Transition Feature Tests ===
+
+Character Tester created.
+
+Player Tester has entered the Palace.
+
+
+=== Running Test: Normal Room Transition ===
+PASS: Normal room transition works.
+
+=== Running Test: Non-Door Tile Should Not Change Room ===
+PASS: Non-door tile does not change room.
+
+=== Running Test: Multi-Room Chain Transition ===
+PASS: Multi-step room transition chain works.
 
 All tests PASSED!
 <end of output>
-Test time =   0.20 sec
+Test time =   0.23 sec
 ----------------------------------------------------------
 Test Passed.
-"FeatureTests" end time: Nov 30 16:56 PST
+"FeatureTests" end time: Dec 04 14:35 PST
 "FeatureTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Nov 30 16:56 PST
+End testing: Dec 04 14:35 PST
