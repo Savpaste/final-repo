@@ -48,6 +48,7 @@ Palace::Palace()
     //Adds RiddleNPC to room
     room1->addRiddleNPC(ghost, 3, 3);
 
+    //Adds door location and destination to room and adds the start position for the player for the next room
     room1->addDoor(8,8,2);
     room1->setStartPosition(1,1);
     room2->addDoor(2, 2, 3);
@@ -102,7 +103,6 @@ void Palace::processInput(char input) {
         return;
     }
 
-
     //Check NPCs collisions
     for (auto& npc : currentRoom->getNPCs()) {
         if (npc->getX() == newX && npc->getY() == newY) {
@@ -118,6 +118,8 @@ void Palace::processInput(char input) {
             return;  // stop moving
         }
     }
+
+    //Checks for door at player's position and gets destination for that door
     int nextRoomID = currentRoom->getDoorDest(newX, newY);
     if (nextRoomID != -1) {
         cout << "You step through the door...\n";
@@ -131,14 +133,16 @@ void Palace::processInput(char input) {
         // Update player coordinates to the new room's spawn point
         Room* newRoom = gameMap.getCurrentRoom();
 
+        //Outputs room info
         if (newRoom) {
             player.setPosition(newRoom->getStartX(), newRoom->getStartY());
             cout << "You are now entering the " << newRoom->getRoomName() << endl;
             cout << "It is a " << newRoom->getRoomDescription() << endl;
         }
 
-        return; // stop further movement in this tick
+        return;
     }
+
     //Safe to move
     player.setPosition(newX, newY);
 }
@@ -146,6 +150,8 @@ void Palace::processInput(char input) {
 void Palace::run() {
 
     while (running) {
+
+        system("clear");
 
         cout << endl;
         gameMap.drawCurrentRoom();

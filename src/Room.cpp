@@ -32,6 +32,7 @@ Room::Room(int roomID, string roomName, string roomDescription, int width, int h
     player->setPosition(1, 1); //Sets players initial position to (1, 1)
 }
 
+//Deep copy constructor
 Room::Room(const Room& other)
     : roomID(other.roomID),
       width(other.width),
@@ -53,6 +54,7 @@ Room::Room(const Room& other)
     }
 }
 
+//Destructor
 Room::~Room() {
     for (int i = 0; i < height; i++) {
         delete[] grid[i];
@@ -70,8 +72,9 @@ Room::~Room() {
     }
 }
 
+//Assignment operator
 Room& Room::operator = (const Room& other) {
-    if (this == &other) return *this; // self-assignment check
+    if (this == &other) return *this;
 
     // Copy simple members
     roomID = other.roomID;
@@ -100,6 +103,7 @@ Room& Room::operator = (const Room& other) {
     return *this;
 }
 
+//Function to draw the room
 void Room::draw() const {
     //Inserts the player symbol
     for (int r = 0; r < height; r++) {
@@ -149,8 +153,8 @@ bool Room::isWall(int r, int c) {
 void Room::leaveRoom() {
 }
 
+//Adds a door to the room
 void Room::addDoor(int r, int c, int nextRoomID) {
-    // Store door info
     doors.push_back(Door(r, c, nextRoomID));
 
     // Mark the door on the grid
@@ -161,13 +165,14 @@ void Room::addDoor(int r, int c, int nextRoomID) {
     }
 }
 
+//Function that determines the destination that the door leads to
 int Room::getDoorDest(int x, int y) const {
     for (const auto& door : doors) {
         if (door.row == y && door.col == x) {
             return door.goToRoomID;
         }
     }
-    return -1;  // not a door
+    return -1;
 }
 
 void Room::setStartPosition(int x, int y) {

@@ -25,6 +25,7 @@ class Map {
     Room* getCurrentRoom() { return currentRoom; };
     int getTotalRooms() const { return rooms.size(); };
 
+    //Map actions
     void addRoom(Room* room);
     void changeRoom(int roomID);
 

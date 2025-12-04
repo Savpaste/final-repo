@@ -42,6 +42,7 @@ class Room {
     //Assignment operator
     Room& operator = (const Room& other);
 
+    //Sets start position for player
     void setStartPosition(int startX, int startY);
 
     //Getters for room features

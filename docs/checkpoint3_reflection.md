@@ -1,4 +1,4 @@
-# Checkpoint 2 Reflection
+# Checkpoint 3 Reflection
 
 ## What I Implemented
 * I add the ability for the user to move to the next room in the map

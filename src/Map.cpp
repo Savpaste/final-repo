@@ -31,7 +31,7 @@ void Map::changeRoom(int roomID) {
 }
 
 void Map::drawCurrentRoom() const {
-    if (currentRoom) {          // use the currentRoom pointer
+    if (currentRoom) {
         currentRoom->draw();
     } else {
         std::cout << "No room to draw!\n";
