@@ -7,7 +7,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include <exception>
+
 
 // ---------- Stream Helpers ----------
 void redirectStreams(std::istringstream& inputSS,
