@@ -74,10 +74,6 @@ class Room {
     void addPuzzle(Puzzle puzzle);
     void addRiddle(Riddle* riddle);
 
-    //Player interactions with room
-    void leaveRoom();
-
-
 };
 
 #endif //FINAL_REPO_LOCAL_ROOM1_H

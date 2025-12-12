@@ -11,6 +11,7 @@ Map::~Map() {
     for (Room* r : rooms) delete r;
 }
 
+//Adds a room to the map
 void Map::addRoom(Room* room) {
     rooms.push_back(room);
     if (!currentRoom) {
@@ -19,6 +20,7 @@ void Map::addRoom(Room* room) {
     }
 }
 
+//Allows the player to move to the next room
 void Map::changeRoom(int roomID) {
     for (Room* r : rooms) {
         if (r->getRoomID() == roomID) {

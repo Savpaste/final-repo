@@ -198,7 +198,7 @@ void Palace::processInput(char input) {
     player.setPosition(newX, newY);
 }
 
-//ChatGPT wrote this
+//ChatGPT wrote this to clear the screen in terminal and use newline in CLion. Newline function not working
 void clearScreen() {
     // If output is a terminal, use ANSI codes
     if (isatty(STDOUT_FILENO)) {

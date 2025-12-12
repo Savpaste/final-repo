@@ -26,6 +26,7 @@ class RiddleNPC : public Character {
     char getSymbol() { return symbol; }
     Riddle* getRiddle() { return riddle; }
 
+    //Logic for riddle being solved correctly
     bool isSolved() const { return solvedAlready; }
 
 };

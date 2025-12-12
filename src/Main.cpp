@@ -1,10 +1,8 @@
 #include "Palace.h"
-#include "Items.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
-
+//Displays the instructions
 void displayInstructions() {
 
     cout << endl << endl;
@@ -24,7 +22,7 @@ void displayInstructions() {
     cout << endl;
 }
 
-
+//Displays the opening menu
 void displayMenu() {
     int choice;
 

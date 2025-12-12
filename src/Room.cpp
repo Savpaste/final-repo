@@ -150,10 +150,7 @@ bool Room::isWall(int c, int r) {
     return grid[r][c] == '#';
 }
 
-
-void Room::leaveRoom() {
-}
-
+//Adds a door to the room
 void Room::addDoor(int c, int r, int nextRoomID, bool locked, RiddleNPC* rnpc) {
     doors.push_back(Door(c, r, nextRoomID, locked, rnpc));
 
@@ -167,7 +164,7 @@ void Room::addDoor(int c, int r, int nextRoomID, bool locked, RiddleNPC* rnpc) {
 }
 
 
-//Adds a door to the room
+//Adds an unlock function that is activated when the riddle is solved
 bool Room::unlockDoor(int r, int c) {
     for (auto &door : doors) {
         if (door.row == r && door.col == c) {
