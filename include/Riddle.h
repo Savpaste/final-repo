@@ -12,6 +12,7 @@ class Riddle : public Game {
     int riddleID;
     std::string question;
     std::function<bool(std::string&)> solver;
+    bool solved = false;
 
     public:
     //Constructor
@@ -22,6 +23,8 @@ class Riddle : public Game {
 
     //Function for NPCs to ask riddles
     bool ask();
+    bool isSolved() const { return solved; }
+
 
 };
 

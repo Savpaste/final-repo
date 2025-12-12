@@ -29,7 +29,10 @@ class Room {
     struct Door {
         int row, col;
         int goToRoomID;
-        Door(int r, int c, int nextID) : row(r), col(c), goToRoomID(nextID) {}
+        bool locked;
+        RiddleNPC* unlockRiddleNPC;
+        Door(int c, int r, int nextID, bool isLocked, RiddleNPC* rnpc = nullptr)
+        : col(c), row(r), goToRoomID(nextID), locked(isLocked), unlockRiddleNPC(rnpc) {}
     };
     std::vector <Door> doors;
 
@@ -51,21 +54,23 @@ class Room {
     std::string getRoomDescription() const {return roomDescription;}
     int getWidth() const { return width; }
     int getHeight() const { return height; }
-    int getDoorDest(int r, int c) const;
+    int getDoorDest(int c, int r);
     int getStartX() const { return startX; }
     int getStartY() const { return startY; }
     std::vector<NPC*> getNPCs() { return npcs; }
     std::vector<RiddleNPC*> getRiddleNPCs() { return riddleNPCs; }
+    std::vector<Door>& getDoors() { return doors; }
 
     //Room actions
     void draw() const;
-    bool isWall(int r, int c);
-    void addDoor(int r, int c, int nextRoomID);
+    bool isWall(int c, int r);
+    void addDoor(int c, int r, int nextRoomID, bool locked = false, RiddleNPC* rnpc = nullptr);
+    bool unlockDoor(int c, int r);
 
 
     //Adds NPCs, RiddleNPCs or games to room
-    void addRiddleNPC(RiddleNPC* riddleNPC, int r, int c);
-    void addNPC(NPC* npc, int r, int c);
+    void addRiddleNPC(RiddleNPC* riddleNPC, int c, int r);
+    void addNPC(NPC* npc, int c, int r);
     void addPuzzle(Puzzle puzzle);
     void addRiddle(Riddle* riddle);
 

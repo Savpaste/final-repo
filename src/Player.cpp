@@ -8,12 +8,12 @@ using namespace std;
 Player::Player(string name) : Character(name),
     inventory(10) {
 
-    cout << "Player " << name << " has entered the Palace." << endl;
+    cout << "Player " << name << " has entered the Palace!" << endl;
     cout << endl;
 }
 
 Player::~Player() {
-    //cout << "Player " << name << " has left the palace." << endl;
+    cout << "Player " << name << " has left the palace!" << endl;
 }
 
 Player& Player::operator += (const Item& item) {

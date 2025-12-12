@@ -143,36 +143,84 @@ void Room::draw() const {
 }
 
 //Function to draw a wall
-bool Room::isWall(int r, int c) {
-    if (r < 0 || r >= width || c < 0 || c >= height) {
+bool Room::isWall(int c, int r) {
+    if (c < 0 || c >= width || r < 0 || r >= height) {
         return true;
     }
-    return grid[c][r] == '#';
+    return grid[r][c] == '#';
 }
+
 
 void Room::leaveRoom() {
 }
 
-//Adds a door to the room
-void Room::addDoor(int r, int c, int nextRoomID) {
-    doors.push_back(Door(r, c, nextRoomID));
+void Room::addDoor(int c, int r, int nextRoomID, bool locked, RiddleNPC* rnpc) {
+    doors.push_back(Door(c, r, nextRoomID, locked, rnpc));
 
     // Mark the door on the grid
     if (r >= 0 && r < height && c >= 0 && c < width) {
-        grid[r][c] = 'D';  // 'D' represents a door
+        grid[r][c] = 'D';
     } else {
-        std::cout << "Warning: Door position (" << r << "," << c << ") is out of bounds!\n";
+        std::cout << "Warning: Door position (" << c << "," << r << ") is out of bounds!\n";
+        cout << endl;
     }
 }
 
-//Function that determines the destination that the door leads to
-int Room::getDoorDest(int x, int y) const {
-    for (const auto& door : doors) {
-        if (door.row == y && door.col == x) {
-            return door.goToRoomID;
+
+//Adds a door to the room
+bool Room::unlockDoor(int r, int c) {
+    for (auto &door : doors) {
+        if (door.row == r && door.col == c) {
+            if (!door.locked) return true;
+
+            if (door.unlockRiddleNPC) {
+                Riddle* riddle = door.unlockRiddleNPC->getRiddle();
+                if (!riddle->isSolved()) {
+                    if (riddle->ask()) {
+                        door.locked = false;
+                        grid[door.row][door.col] = 'D';
+                        std::cout << "Correct! Door unlocked.\n";
+                        return true;
+                    }
+                    return false;
+                } else {
+                    door.locked = false;
+                    grid[door.row][door.col] = 'D';
+                    return true;
+                }
+            }
+
+            std::cout << "No RiddleNPC assigned to this door. Door stays locked.\n";
+            return false;
         }
     }
-    return -1;
+    return false;
+}
+
+//Function that determines the destination that the door leads to
+int Room::getDoorDest(int x, int y) {
+    for (auto &door : doors) {
+        if (door.row == y && door.col == x) {
+
+            // Door is locked and RiddleNPC exists
+            if (door.locked) {
+                if (door.unlockRiddleNPC && door.unlockRiddleNPC->getRiddle()->isSolved()) {
+                    door.locked = false;
+                    grid[door.row][door.col] = 'D';
+                }
+            }
+
+            // If still locked, return -1 so the player cannot move
+            if (door.locked) {
+                std::cout << "The door is locked. Solve the riddle first!\n";
+                return -1;
+            }
+
+            return door.goToRoomID; // unlocked, player can move through
+        }
+    }
+
+    return -1; // no door here
 }
 
 void Room::setStartPosition(int x, int y) {
@@ -180,13 +228,13 @@ void Room::setStartPosition(int x, int y) {
     startY = y;
 }
 
-void Room::addNPC(NPC* npc, int r, int c) {
-    npc->setPosition(r, c);
+void Room::addNPC(NPC* npc, int c, int r) {
+    npc->setPosition(c, r);
     npcs.push_back(npc);
 }
 
-void Room::addRiddleNPC(RiddleNPC* rnpc, int r, int c) {
-    rnpc->setPosition(r, c);
+void Room::addRiddleNPC(RiddleNPC* rnpc, int c, int r) {
+    rnpc->setPosition(c, r);
     riddleNPCs.push_back(rnpc);
 }
 

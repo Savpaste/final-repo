@@ -27,8 +27,9 @@ bool Riddle::ask() {
 
         //If solved returns true.  If not returns false.
         if (solver(answer)) {
+            solved = true;
             cout << endl;
-            cout << "Correct!\n";
+            cout << "Correct! The door is now unlocked!\n";
             return true;
         }
 

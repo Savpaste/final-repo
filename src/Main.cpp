@@ -8,9 +8,9 @@ using namespace std;
 void displayInstructions() {
 
     cout << endl << endl;
-    cout << "--- Instructions ---\n";
+    cout << "--- INSTRUCTIONS ---\n";
     cout << endl;
-    cout << "You must traverse the palace and answer riddles and complete puzzles to advance. \n"
+    cout << "You must traverse the palace and answer riddles. \n"
             "Characters are represented by single letters. \n"
             "The lower case letters represent NPCs that only have dialogue, and the upper case letters represent NPCs that will ask a riddle. \n"
             "Solve all the games to escape the palace. Good luck, adventurer!!\n";
@@ -29,7 +29,7 @@ void displayMenu() {
     int choice;
 
     do {
-        cout << "--- Puzzle Palace Main Menu ---\n";
+        cout << "--- PUZZLE PALACE MAIN MENU ---\n";
         cout << endl;
         cout << "1. Play\n";
         cout << "2. Instructions\n";
@@ -65,7 +65,7 @@ int main() {
 
 
     cout << endl;
-    cout << "=== Welcome to the Puzzle Palace ===" << endl;
+    cout << "=== WELCOME TO PUZZLE PALACE ===" << endl;
     cout << endl;
 
     displayMenu();
@@ -78,15 +78,12 @@ int main() {
     cin.ignore();
     cout << endl;
 
+    system("clear");
+
     palace.run();
 
-
-    //TODO create puzzles and add to rooms
-
-    //TODO add logic for changing rooms
-
-    //TODO: End game
     cout << "Thank you for playing Puzzle Palace!\n";
+    cout << endl;
 
 return 0;
 }

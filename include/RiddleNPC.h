@@ -24,6 +24,7 @@ class RiddleNPC : public Character {
 
     //Returns the symbol that represents the RiddleNPC
     char getSymbol() { return symbol; }
+    Riddle* getRiddle() { return riddle; }
 
     bool isSolved() const { return solvedAlready; }
 
