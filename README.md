@@ -53,3 +53,10 @@ An awesome adventure game that involves solving puzzles and riddles and interact
 
 **Planned**
 * **Feature 5**: Add win logic 
+
+---
+
+## Final Feature
+
+**Final Feature**
+* Features 3 and 5
