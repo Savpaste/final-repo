@@ -88,7 +88,7 @@ Palace::Palace()
     room1->addRiddleNPC(steward, 5, 3);
     room2->addRiddleNPC(knight, 10, 5);
     room3->addRiddleNPC(king, 5, 4);
-    room4->addRiddleNPC(executioner, 6, 6);
+    room4->addRiddleNPC(executioner, 6, 4);
     room5->addRiddleNPC(treasurer, 4, 12);
 
     //Adds door location and destination ID to next room,  and adds the start position for the player for the next room
@@ -98,7 +98,7 @@ Palace::Palace()
     room2->setStartPosition(1,1);
     room3->addDoor(7,6, 4, true, king);
     room3->setStartPosition(1,1);
-    room4->addDoor(4, 4, 5, true, executioner);
+    room4->addDoor(4, 6, 5, true, executioner);
     room4->setStartPosition(1,1);
     room5->addDoor(3, 14, 6, true, treasurer);
     room5->setStartPosition(1,1);
@@ -198,6 +198,7 @@ void Palace::processInput(char input) {
     player.setPosition(newX, newY);
 }
 
+bool isTerminal = isatty(fileno(stdout));
 //ChatGPT wrote this to clear the screen in terminal and use newline in CLion. Newline function not working
 void clearScreen() {
     // If output is a terminal, use ANSI codes
