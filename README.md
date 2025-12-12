@@ -59,4 +59,4 @@ An awesome adventure game that involves solving puzzles and riddles and interact
 ## Final Feature
 
 **Final Feature**
-* Features 3 and 5
+* Features 3
